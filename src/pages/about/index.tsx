@@ -3,15 +3,8 @@
 import Layout from "@/components/Layout";
 import React from "react";
 import dynamic from "next/dynamic";
-import {
-  Line,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
+import { Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import ProductList from "@/components/ProductList";
 
 // Disable SSR for ComposedChart to avoid Next.js hydration issues
 const ComposedChartNoSSR = dynamic(
@@ -39,7 +32,7 @@ const About: React.FC = () => {
     <Layout>
       <h1>About Page</h1>
       <ComposedChartNoSSR
-        width={500}
+        width={520}
         height={400}
         data={data}
         margin={{
@@ -51,12 +44,12 @@ const About: React.FC = () => {
       >
         <CartesianGrid stroke="#f5f5f5" />
         <XAxis dataKey="name" scale="band" />
-        <YAxis  dataKey="uv"/>
+        <YAxis dataKey="uv" />
         <Tooltip />
         <Legend />
-        <Bar dataKey="uv" barSize={20} fill="#413ea0" />
-        <Line type="monotone" dataKey="uv" stroke="#ff7300" />
+        <Bar dataKey="uv" barSize={10} fill="#413ea0" />
       </ComposedChartNoSSR>
+      <ProductList />
     </Layout>
   );
 };
